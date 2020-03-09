@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<style>
+			body{
+				margin: 0;
+			}
+
+			#container{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				display: block;
+				background: pink;
+			}
+
+			#hud{
+				z-index: 10;
+			}
+
+			canvas{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			form{
+				display: grid;
+				grid-template-columns: auto auto;
+				grid-column-gap: 10px;
+				/*display: none;*/
+			}
+			form > p{
+				margin: 0;
+				padding: 0;
+				border-bottom: 1px solid gray;
+				text-align: right;
+			}
+			form > p:first-child{
+				color: red;	
+				grid-column-start: 1;
+				grid-column-start: 2;
+			}
+			.config_container{
+				width: 600px;
+				padding: 5px;
+				background: #333;
+				color: silver;
+				position: absolute;
+				left: 100px;
+				z-index: 20;
+			}
+			.config_container > a{
+				color: silver;
+				text-align: right;
+				display:block;
+				width: 100%;
+			}
+
+			form > div{
+				display: grid;
+				grid-template-columns: 80% 20%;
+			}
+
+			/*.canvas_t {
+				background: red;
+				width: 100%;
+				height: 100%;
+				display: block;
+			}*/
+		</style>
+		<meta charset="utf-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+		<!-- <script  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.js"></script> -->
+		<!-- <script type="module" src="three.module.js"></script> -->
+		<!-- <script type="text/javascript" src="pointer_lock.js"></script> -->
+		<!-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.module.js"></script> -->
+		<script type="module" src="mathUtils.js"></script>
+		<!-- <script src="controls.js"></script> -->
+		<script type="module" src="gameScript.js"></script>
+		<script type="text/javascript">
+			var options_visible = true;
+			window.addEventListener('load', () =>{
+				var toggl = document.getElementById("toggle_link");
+
+				toggl.addEventListener('click', () => {
+					if(options_visible){
+						document.forms[0].style.display = 'none';
+					}else{
+						document.forms[0].style.display = 'grid';
+					}
+					options_visible = !options_visible;
+				});
+
+
+				// move to gamescript
+				
+			});
+
+		</script>
+	</head>
+	<body>
+		<!-- <canvas width="650" height="450" style="border: 1px solid green;"></canvas> -->
+		<div class="config_container">
+			<form>
+				<p>#</p>
+				<p>Player name</p> <input type="text" name="name">
+				<p>Server ip</p><input type="text" name="ip" placeholder="addr:port (localhost:5003)" value="localhost:5001">
+				<p>rendered width</p><input type="text" name="custom_width" value="650">
+				<p>rendered height</p><input type="text" name="custom_height" value="450">
+				<p>resize to fill screen</p><input type="checkbox" name="resize_screen"> 
+				<p>fps limit (-1 to disable)</p><input type="text" name="fps" value="14">
+				<p>mouse sensitivity</p><div><input type="range" min="1" max="300" value="100" name="msens_range"><input type="number" value="1.00"  name="msens_number"></div>
+				<p></p><input type="button" value="connect" name="connect">
+				<p></p><input type="button" value="update" name="update" disabled>
+				<p></p><input type="button" value="debug" name="debug" disabled>
+
+			</form>
+			<a href="#" id="toggle_link"> > toggle_options < </a>
+		</div>
+		<div class="canvas_t" id="container"></div>
+	</body>
+</html>
