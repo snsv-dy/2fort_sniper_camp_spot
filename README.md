@@ -1,5 +1,5 @@
 # 2fort_sniper_camp_spot
-A simple game inspired by playing as a sniper on 2fort in team fortress 2 and trying to headshoot snipers on the opposite side. I made this becouse I had some free time, and wanted to learn a little bit of java language.
+A simple game inspired by playing as a sniper on 2fort in team fortress 2 and trying to headshoot snipers on the opposite side. Built by using Three.js, and json-simple. I had some free time, and wanted to learn a little bit of java language, so I made this game.
 
 You can compile the server using this command  
 `javac -cp ".:json-simple-1.1.jar" WSServer.java`  
